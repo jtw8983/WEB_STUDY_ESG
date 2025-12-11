@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 & 회원가입</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding-right: 20px; /* 오른쪽 여백 추가 */
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .toggle-link {
+            text-decoration: none;
+            color: #4CAF50;
+            cursor: pointer;
+        }
+
+        .toggle-link:hover {
+            text-decoration: underline;
+        }
+
+        .form-wrapper {
+            display: none;
+        }
+
+        .form-wrapper.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-wrapper active" id="login-form">
+            <h2>로그인</h2>
+            <form action="#" method="POST">
+                <input type="text" name="username" placeholder="아이디" required>
+                <input type="password" name="password" placeholder="비밀번호" required>
+                <button type="submit">로그인</button>
+            </form>
+            <p>아직 회원이 아니신가요? <a href="#" class="toggle-link" onclick="toggleForm('signup')">회원가입</a></p>
+        </div>
+
+        <div class="form-wrapper" id="signup-form">
+            <h2>회원가입</h2>
+            <form action="#" method="POST">
+                <input type="text" name="username" placeholder="아이디" required>
+                <input type="email" name="email" placeholder="이메일" required>
+                <input type="password" name="password" placeholder="비밀번호" required>
+                <input type="password" name="confirm-password" placeholder="비밀번호 확인" required>
+                <button type="submit">회원가입</button>
+            </form>
+            <p>이미 회원이신가요? <a href="#" class="toggle-link" onclick="toggleForm('login')">로그인</a></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(formType) {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+
+            if (formType === 'login') {
+                loginForm.classList.add('active');
+                signupForm.classList.remove('active');
+            } else {
+                signupForm.classList.add('active');
+                loginForm.classList.remove('active');
+            }
+        }
+    </script>
+
+<ol>
+        <li class="li">
+            <a href="page1.html">PAGE1</a>
+        </li>
+        <li class="li">
+            <a href="page2.html">PAGE2</a>
+        </li>
+    </ol>
+</body>
+</html>
