@@ -1,0 +1,44 @@
+<!DOCTYPE html> <!-- 문서가 HTML5 문서임을 선언 -->
+<html lang="en"> <!-- 문서 언어를 영어로 설정 -->
+<head>
+  <meta charset="UTF-8"> <!-- 문자의 인코딩을 UTF-8로 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 반응형 웹을 위한 뷰포트 설정 -->
+  <title>Document</title> <!-- 브라우저 탭에 표시될 문서 제목 -->
+  <style>
+    * {box-sizing: border-box;} /* 모든 요소에 border-box 적용 → padding, border 포함하여 크기 계산 */
+    html, body {margin: 0; padding: 0;} /* html과 body의 기본 여백 제거 */
+
+    /* ul 스타일 설정 */
+    ul { 
+      display: flex;            /* ul을 flexbox 컨테이너로 설정 */
+      gap: 10px;                /* li 요소들 사이에 10px 간격 적용 */
+      flex-direction: column;   /* li 요소들을 세로 방향(열 방향)으로 배치 */
+      margin: 0;                /* ul의 기본 margin 제거 */
+      padding-left: 0;          /* 기본 왼쪽 들여쓰기 제거 */
+      list-style-type: none;    /* 불릿(●) 없애기 */
+    }
+
+    /* li 스타일 설정 */
+    li { 
+      height: 50px;                           /* li 요소의 높이를 50px로 지정 */
+      display: flex;                           /* li를 flexbox로 설정 */
+      align-items: center;                     /* 세로(center) 정렬 */
+      justify-content: center;                 /* 가로(center) 정렬 */
+      text-align: center;                      /* 텍스트 가운데 정렬 */
+      font-weight: bold;                       /* 텍스트를 굵게 설정 */
+      border: 1px solid #000;                  /* li에 검은색 테두리 적용 */
+    }
+  </style>
+</head>
+<body>
+  <ul> <!-- flex 컨테이너 역할을 하는 ul -->
+		<li>A</li> <!-- 각각 50px 높이의 박스로 표시됨 -->
+		<li>B</li>
+		<li>C</li>
+		<li>D</li>
+		<li>E</li>
+		<li>F</li>
+	</ul>
+</body>
+</html>
+
