@@ -1,0 +1,8 @@
+/**{box-sizing: border-box;}
+body {margin: 0;}
+/*form {text-align: center;}*/
+/*label{width: 100px; text-align: start; display:inline-block; float:left}
+input {width: calc(100% - 100px); max-width: calc(600px - 100px);}
+div {width: 100%; max-width: 600px;}
+input[type=submit] {margin-top: 5px; width: 100%;}
+input[type=submit]:hover {cursor: pointer;background-color: blueviolet;}
