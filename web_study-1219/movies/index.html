@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화</title>
+    <link rel="stylesheet" type="text/css" href="common.css" />
+    <script src="http://aiedu.tplinkdns.com/movie.js"></script>
+<style>
+    /* <Class feature-card 부분> */
+    .home .feature-card{
+        position: relative
+    }
+
+     /* <Class detail 부분> */
+    .home .feature-card .detail {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.6);
+			padding: 16px;
+			z-index: 5; /* 요소가 화면에서 겹칠 떄의 쌓이는 순서(앞뒤 순서) => 값이 클수록 더 앞(위)에 보임 ,밑의 요소가 위로 올라갈 때는 값의 차이를 크게 못느낄 수 있음 */ 
+	} 
+
+    /* <Class detail의 h3부분> */
+	.home .feature-card .detail h3 {
+			color: #FFF;
+			margin-bottom: 15px;
+	}
+
+    /* <Class detail의 p부분> */
+	.home .feature-card .detail p {
+			color: #FFF;
+	}
+
+    /* <Class 검색상자 부분> */
+    .home .search-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding:15px;
+    }
+    /* <Class 검색상자의 input 부분> */
+    .home .search-box input {
+            display: block;
+            appearance: none;
+            border: none;
+            outline: none;
+            
+    }
+
+    /* <Class 검색상자의 input 글 부분> */
+    .home .search-box input[type=text] {
+            width: 100%;
+            color: #FFF;
+            background-color: #496583;
+            font-size: 20px;
+            padding:10px 16px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: 0.4s;
+    }
+
+    /* <Class 검색상자의 input 글의 placeholder> */
+    .home .search-box input[type=text]::placeholder{
+            color: #f3f3f3;
+    }
+
+    /* <Class 검색상자의 input 글의 focus> */
+    .home .search-box input[type=text]:focus {
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* <Class 검색상자의 input 글의 검색이라는 버튼 스타일> */
+    .home .search-box input[type=submit] {
+            width:100%;
+            max-width: 300px;
+            background-color: #42B883;
+            padding:16px;
+            border-radius: 8px;
+            color:#fff;
+            font-size: 20px;
+            text-transform: uppercase; /*텍스트를 전부 대문자로 표시*/
+            transition:0.4s; /*바로 바뀌지 않고 0.4에 걸쳐 천천히 바뀜*/
+            cursor: pointer; /*버튼에 가져다대면 손가락 모양 생김*/
+    }
+
+     /* <Class 검색상자의 input 글의 검색이라는 버튼 스타일이 동작 시 > */
+    .home .search-box input[type=submit]:active {
+            background-color: #3B8070;
+    }
+    
+    /* <Class movies-list의 스타일 설정>*/
+    .home .movies-list{
+            display: flex;
+            flex-wrap: wrap; /*플렉스 아이템들이 한 줄에 다 안들어갈때, 줄바꿈*/
+            margin: 0px 8px;
+    }
+
+    /* <Class movies-list 안의 movie의 스타일 설정>*/
+    .home .movies-list .movie {
+            max-width: 50%;
+            flex: 1 1 50%;
+            padding: 16px 8px;
+    }
+
+    /* <Class movies-list 안의 class movie안의 movie-link 스타일 설정>*/
+    .home .movies-list .movie .movie-link {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+    }
+
+    /* <Class movies-list 안의 class movie안의 movie-link의 이미지 스타일 설정>*/
+    .home .movies-list .movie .movie-link .product-image {
+            position: relative;
+            display: block;
+    }
+
+    /* <Class movies-list 안의 class movie안의 movie-link의 이미지 설정>*/
+    .home .movies-list .movie .movie-link .product-image img {
+            display: block;
+            width: 100%;
+            height: 275px;
+            object-fit: cover; /*이미지를 부모 요소 크기에 맞추되, 비율은 유지하면서 꽉 채우기(잘리더라도 빈 공간 없이 채움)*/
+    }
+
+    /* <Class movies-list 안의 class movie안의 movie-link의 이미지 유형 설정>*/
+    .home .movies-list .movie .movie-link .product-image .type {
+			position: absolute;
+			padding: 8px 16px;
+			background-color: #42B883;
+			color: #FFF;
+			bottom: 16px;
+			left: 0px;
+			text-transform: capitalize;
+    }
+
+    /* <Class movies-list 안의 class movie안의 movie-link의 detail 설정>*/
+    .home .movies-list .movie .movie-link .detail {
+			background-color: #496583;
+			padding: 16px 8px;
+			flex: 1 1 100%;
+			border-radius: 0px 0px 8px 8px;
+    }
+    /* <Class movies-list 안 class movie안 movie-link의 detail의 연도 설정>*/
+    
+	.home .movies-list .movie .movie-link .detail .year {
+			color: gray;
+            font-style: italic;
+			font-size: 15px;
+	}
+
+    /* <Class movies-list 안 class movie안 movie-link의 detail의 h3 부분 설정>*/
+    
+	.home .movies-list .movie .movie-link .detail h3 {
+			color: white;
+			font-weight: 550;
+			font-size: 20px;
+	}  
+</style>
+</head>
+<body onload="load()">
+    <header>
+    <a href="index.html">
+        <h1><span>AI</span>MOVIES</h1>
+    </a>
+    </header>
+    <main class="home">
+        <div class="feature-card">
+            <a href="movie.html">
+                <img src="https://m.media-amazon.com/images/M/MV5BYWRiYjQyOGItNzQ1Mi00MGI1LWE3NjItNTg1ZDQwNjUwNDM2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg" alt="Movie Poster" class="featured-img" />
+            <div class="detail">
+                <h3>Ghost in the Shell</h3>
+                <p>It is the year 2029. Technology has advanced so far that cyborgs are commonplace. In addition, human brains can connect to the internet directly. Major Motoko Kusanagi is an officer in Section 9, an elite, secretive police division that deals with special operations, including counter terrorism and cyber crime. She is currently on the trail of the Puppet Master, a cyber criminal who hacks into the brains of cyborgs in order to obtain information and to commit other crimes.</p></p>
+            </div>
+            </a>
+        </div>
+        
+            <form action="#" class="search-box" id="movie-search">
+            <input type="text" name="keyword" placeholder="영화 제목을 입력하세요." />
+            <input type="submit" value="검색"/>
+            </form>
+
+    <div class="movies-list">
+        <div class="movie">
+            <a href="movie.html" class="movie-link">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYWRiYjQyOGItNzQ1Mi00MGI1LWE3NjItNTg1ZDQwNjUwNDM2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg" alt="Movie Poster" />
+                    <div class="type">movie</div>
+                </div>
+                <div class="detail">
+                    <p class="year">1995</p>
+                    <h3>Ghost in the shell</h3>
+                </div>
+                </a>
+            </div>
+
+    <div class="movie">
+        <a href="movie.html" class="movie-link">
+            <div class="product-image">
+            <img src="https://placehold.co/960x600?text=None" alt="Movie Poster"/> <!--만드는 도중에 꺠지게 나오는 부분이 있었는데 캐싱 메모리 부족으로 깨져 보임! 다 만들고 새로고침하니 잘 나옴-->
+                <div class="type">Box</div>
+            </div>
+            <div class="detail">
+                <p class="year">2023</p>
+                <h3>영화 제목</h3>
+            </div>
+        </a>
+    </div>
+    </main>
+</body>
+</html>
